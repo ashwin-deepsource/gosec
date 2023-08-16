@@ -4,7 +4,6 @@ package sarif
 
 // Address A physical or virtual address, or a range of addresses, in an 'addressable region' (memory or a binary file).
 type Address struct {
-
 	// The address expressed as a byte offset from the start of the addressable region.
 	AbsoluteAddress int `json:"absoluteAddress,omitempty"`
 
@@ -38,7 +37,6 @@ type Address struct {
 
 // Artifact A single artifact. In some cases, this artifact might be nested within another artifact.
 type Artifact struct {
-
 	// The contents of the artifact.
 	Contents *ArtifactContent `json:"contents,omitempty"`
 
@@ -81,7 +79,6 @@ type Artifact struct {
 
 // ArtifactChange A change to a single artifact.
 type ArtifactChange struct {
-
 	// The location of the artifact to change.
 	ArtifactLocation *ArtifactLocation `json:"artifactLocation"`
 
@@ -94,7 +91,6 @@ type ArtifactChange struct {
 
 // ArtifactContent Represents the contents of an artifact.
 type ArtifactContent struct {
-
 	// MIME Base64-encoded content from a binary artifact, or from a text artifact in its original encoding.
 	Binary string `json:"binary,omitempty"`
 
@@ -110,7 +106,6 @@ type ArtifactContent struct {
 
 // ArtifactLocation Specifies the location of an artifact.
 type ArtifactLocation struct {
-
 	// A short description of the artifact location.
 	Description *Message `json:"description,omitempty"`
 
@@ -129,7 +124,6 @@ type ArtifactLocation struct {
 
 // Attachment An artifact relevant to a result.
 type Attachment struct {
-
 	// The location of the attachment.
 	ArtifactLocation *ArtifactLocation `json:"artifactLocation"`
 
@@ -148,7 +142,6 @@ type Attachment struct {
 
 // CodeFlow A set of threadFlows which together describe a pattern of code execution relevant to detecting a result.
 type CodeFlow struct {
-
 	// A message relevant to the code flow.
 	Message *Message `json:"message,omitempty"`
 
@@ -161,7 +154,6 @@ type CodeFlow struct {
 
 // ConfigurationOverride Information about how a specific rule or notification was reconfigured at runtime.
 type ConfigurationOverride struct {
-
 	// Specifies how the rule or notification was configured during the scan.
 	Configuration *ReportingConfiguration `json:"configuration"`
 
@@ -174,7 +166,6 @@ type ConfigurationOverride struct {
 
 // Conversion Describes how a converter transformed the output of a static analysis tool from the analysis tool's native output format into the SARIF format.
 type Conversion struct {
-
 	// The locations of the analysis tool's per-run log files.
 	AnalysisToolLogFiles []*ArtifactLocation `json:"analysisToolLogFiles,omitempty"`
 
@@ -190,7 +181,6 @@ type Conversion struct {
 
 // Edge Represents a directed edge in a graph.
 type Edge struct {
-
 	// A string that uniquely identifies the edge within its graph.
 	ID string `json:"id"`
 
@@ -209,7 +199,6 @@ type Edge struct {
 
 // EdgeTraversal Represents the traversal of a single edge during a graph traversal.
 type EdgeTraversal struct {
-
 	// Identifies the edge being traversed.
 	EdgeID string `json:"edgeId"`
 
@@ -228,7 +217,6 @@ type EdgeTraversal struct {
 
 // Exception Describes a runtime exception encountered during the execution of an analysis tool.
 type Exception struct {
-
 	// An array of exception objects each of which is considered a cause of this exception.
 	InnerExceptions []*Exception `json:"innerExceptions,omitempty"`
 
@@ -247,7 +235,6 @@ type Exception struct {
 
 // ExternalProperties The top-level element of an external property file.
 type ExternalProperties struct {
-
 	// Addresses that will be merged with a separate run.
 	Addresses []*Address `json:"addresses,omitempty"`
 
@@ -314,7 +301,6 @@ type ExternalProperties struct {
 
 // ExternalPropertyFileReference Contains information that enables a SARIF consumer to locate the external property file that contains the value of an externalized property associated with the run.
 type ExternalPropertyFileReference struct {
-
 	// A stable, unique identifier for the external property file in the form of a GUID.
 	GUID string `json:"guid,omitempty"`
 
@@ -330,7 +316,6 @@ type ExternalPropertyFileReference struct {
 
 // ExternalPropertyFileReferences References to external property files that should be inlined with the content of a root log file.
 type ExternalPropertyFileReferences struct {
-
 	// An array of external property files containing run.addresses arrays to be merged with the root log file.
 	Addresses []*ExternalPropertyFileReference `json:"addresses,omitempty"`
 
@@ -385,7 +370,6 @@ type ExternalPropertyFileReferences struct {
 
 // Fix A proposed fix for the problem represented by a result object. A fix specifies a set of artifacts to modify. For each artifact, it specifies a set of bytes to remove, and provides a set of new bytes to replace them.
 type Fix struct {
-
 	// One or more artifact changes that comprise a fix for a result.
 	ArtifactChanges []*ArtifactChange `json:"artifactChanges"`
 
@@ -398,7 +382,6 @@ type Fix struct {
 
 // Graph A network of nodes and directed edges that describes some aspect of the structure of the code (for example, a call graph).
 type Graph struct {
-
 	// A description of the graph.
 	Description *Message `json:"description,omitempty"`
 
@@ -414,7 +397,6 @@ type Graph struct {
 
 // GraphTraversal Represents a path through a graph.
 type GraphTraversal struct {
-
 	// A description of this graph traversal.
 	Description *Message `json:"description,omitempty"`
 
@@ -439,7 +421,6 @@ type GraphTraversal struct {
 
 // Invocation The runtime environment of the analysis tool run.
 type Invocation struct {
-
 	// The account under which the invocation occurred.
 	Account string `json:"account,omitempty"`
 
@@ -521,7 +502,6 @@ type Invocation struct {
 
 // Location A location within a programming artifact.
 type Location struct {
-
 	// A set of regions relevant to the location.
 	Annotations []*Region `json:"annotations,omitempty"`
 
@@ -546,7 +526,6 @@ type Location struct {
 
 // LocationRelationship Information about the relation of one location to another.
 type LocationRelationship struct {
-
 	// A description of the location relationship.
 	Description *Message `json:"description,omitempty"`
 
@@ -562,7 +541,6 @@ type LocationRelationship struct {
 
 // LogicalLocation A logical location of a construct that produced a result.
 type LogicalLocation struct {
-
 	// The machine-readable name for the logical location, such as a mangled function name provided by a C++ compiler that encodes calling convention, return type and other details along with the function name.
 	DecoratedName string `json:"decoratedName,omitempty"`
 
@@ -587,7 +565,6 @@ type LogicalLocation struct {
 
 // Message Encapsulates a message intended to be read by the end user.
 type Message struct {
-
 	// An array of strings to substitute into the message string.
 	Arguments []string `json:"arguments,omitempty"`
 
@@ -606,7 +583,6 @@ type Message struct {
 
 // MultiformatMessageString A message string or message format string rendered in multiple formats.
 type MultiformatMessageString struct {
-
 	// A Markdown message string or format string.
 	Markdown string `json:"markdown,omitempty"`
 
@@ -619,7 +595,6 @@ type MultiformatMessageString struct {
 
 // Node Represents a node in a graph.
 type Node struct {
-
 	// Array of child nodes.
 	Children []*Node `json:"children,omitempty"`
 
@@ -638,7 +613,6 @@ type Node struct {
 
 // Notification Describes a condition relevant to the tool itself, as opposed to being relevant to a target being analyzed by the tool.
 type Notification struct {
-
 	// A reference used to locate the rule descriptor associated with this notification.
 	AssociatedRule *ReportingDescriptorReference `json:"associatedRule,omitempty"`
 
@@ -669,7 +643,6 @@ type Notification struct {
 
 // PhysicalLocation A physical location relevant to a result. Specifies a reference to a programming artifact together with a range of bytes or characters within that artifact.
 type PhysicalLocation struct {
-
 	// The address of the location.
 	Address *Address `json:"address,omitempty"`
 
@@ -691,7 +664,6 @@ type PropertyBag map[string]interface{}
 
 // Rectangle An area within an image.
 type Rectangle struct {
-
 	// The Y coordinate of the bottom edge of the rectangle, measured in the image's natural units.
 	Bottom float64 `json:"bottom,omitempty"`
 
@@ -713,7 +685,6 @@ type Rectangle struct {
 
 // Region A region within an artifact where a result was detected.
 type Region struct {
-
 	// The length of the region in bytes.
 	ByteLength int `json:"byteLength,omitempty"`
 
@@ -753,7 +724,6 @@ type Region struct {
 
 // Replacement The replacement of a single region of an artifact.
 type Replacement struct {
-
 	// The region of the artifact to delete.
 	DeletedRegion *Region `json:"deletedRegion"`
 
@@ -766,7 +736,6 @@ type Replacement struct {
 
 // ReportingConfiguration Information about a rule or notification that can be configured at runtime.
 type ReportingConfiguration struct {
-
 	// Specifies whether the report may be produced during the scan.
 	Enabled bool `json:"enabled,omitempty"`
 
@@ -785,7 +754,6 @@ type ReportingConfiguration struct {
 
 // ReportingDescriptor Metadata that describes a specific report produced by the tool, as part of the analysis it provides or its runtime reporting.
 type ReportingDescriptor struct {
-
 	// Default reporting configuration information.
 	DefaultConfiguration *ReportingConfiguration `json:"defaultConfiguration,omitempty"`
 
@@ -831,7 +799,6 @@ type ReportingDescriptor struct {
 
 // ReportingDescriptorReference Information about how to locate a relevant reporting descriptor.
 type ReportingDescriptorReference struct {
-
 	// A guid that uniquely identifies the descriptor.
 	GUID string `json:"guid,omitempty"`
 
@@ -850,7 +817,6 @@ type ReportingDescriptorReference struct {
 
 // ReportingDescriptorRelationship Information about the relation of one reporting descriptor to another.
 type ReportingDescriptorRelationship struct {
-
 	// A description of the reporting descriptor relationship.
 	Description *Message `json:"description,omitempty"`
 
@@ -866,7 +832,6 @@ type ReportingDescriptorRelationship struct {
 
 // Result A result produced by an analysis tool.
 type Result struct {
-
 	// Identifies the artifact that the analysis tool was instructed to scan. This need not be the same as the artifact where the result actually occurred.
 	AnalysisTarget *ArtifactLocation `json:"analysisTarget,omitempty"`
 
@@ -960,7 +925,6 @@ type Result struct {
 
 // ResultProvenance Contains information about how and when a result was detected.
 type ResultProvenance struct {
-
 	// An array of physicalLocation objects which specify the portions of an analysis tool's output that a converter transformed into the result.
 	ConversionSources []*PhysicalLocation `json:"conversionSources,omitempty"`
 
@@ -985,7 +949,6 @@ type ResultProvenance struct {
 
 // Run Describes a single run of an analysis tool, and contains the reported output of that run.
 type Run struct {
-
 	// Addresses associated with this run instance, if any.
 	Addresses []*Address `json:"addresses,omitempty"`
 
@@ -1073,7 +1036,6 @@ type Run struct {
 
 // RunAutomationDetails Information that describes a run's identity and role within an engineering system process.
 type RunAutomationDetails struct {
-
 	// A stable, unique identifier for the equivalence class of runs to which this object's containing run object belongs in the form of a GUID.
 	CorrelationGUID string `json:"correlationGuid,omitempty"`
 
@@ -1092,7 +1054,6 @@ type RunAutomationDetails struct {
 
 // SpecialLocations Defines locations of special significance to SARIF consumers.
 type SpecialLocations struct {
-
 	// Provides a suggestion to SARIF consumers to display file paths relative to the specified location.
 	DisplayBase *ArtifactLocation `json:"displayBase,omitempty"`
 
@@ -1102,7 +1063,6 @@ type SpecialLocations struct {
 
 // Stack A call stack that is relevant to a result.
 type Stack struct {
-
 	// An array of stack frames that represents a sequence of calls, rendered in reverse chronological order, that comprise the call stack.
 	Frames []*StackFrame `json:"frames"`
 
@@ -1115,7 +1075,6 @@ type Stack struct {
 
 // StackFrame A function call within a stack trace.
 type StackFrame struct {
-
 	// The location to which this stack frame refers.
 	Location *Location `json:"location,omitempty"`
 
@@ -1134,7 +1093,6 @@ type StackFrame struct {
 
 // Report Static Analysis Results Format (SARIF) Version 2.1.0 JSON Schema: a standard format for the output of static analysis tools.
 type Report struct {
-
 	// References to external property files that share data between runs.
 	InlineExternalProperties []*ExternalProperties `json:"inlineExternalProperties,omitempty"`
 
@@ -1153,7 +1111,6 @@ type Report struct {
 
 // Suppression A suppression that is relevant to a result.
 type Suppression struct {
-
 	// A stable, unique identifier for the suprression in the form of a GUID.
 	GUID string `json:"guid,omitempty"`
 
@@ -1175,7 +1132,6 @@ type Suppression struct {
 
 // ThreadFlow Describes a sequence of code locations that specify a path through a single thread of execution such as an operating system or fiber.
 type ThreadFlow struct {
-
 	// An string that uniquely identifies the threadFlow within the codeFlow in which it occurs.
 	ID string `json:"id,omitempty"`
 
@@ -1197,7 +1153,6 @@ type ThreadFlow struct {
 
 // ThreadFlowLocation A location visited by an analysis tool while simulating or monitoring the execution of a program.
 type ThreadFlowLocation struct {
-
 	// An integer representing the temporal order in which execution reached this location.
 	ExecutionOrder int `json:"executionOrder,omitempty"`
 
@@ -1243,7 +1198,6 @@ type ThreadFlowLocation struct {
 
 // Tool The analysis tool that was run.
 type Tool struct {
-
 	// The analysis tool that was run.
 	Driver *ToolComponent `json:"driver"`
 
@@ -1256,7 +1210,6 @@ type Tool struct {
 
 // ToolComponent A component, such as a plug-in or the driver, of the analysis tool that was run.
 type ToolComponent struct {
-
 	// The component which is strongly associated with this component. For a translation, this refers to the component which has been translated. For an extension, this is the driver that provides the extension's plugin model.
 	AssociatedComponent *ToolComponentReference `json:"associatedComponent,omitempty"`
 
@@ -1344,7 +1297,6 @@ type ToolComponent struct {
 
 // ToolComponentReference Identifies a particular toolComponent object, either the driver or an extension.
 type ToolComponentReference struct {
-
 	// The 'guid' property of the referenced toolComponent.
 	GUID string `json:"guid,omitempty"`
 
@@ -1360,7 +1312,6 @@ type ToolComponentReference struct {
 
 // TranslationMetadata Provides additional metadata related to translation.
 type TranslationMetadata struct {
-
 	// The absolute URI from which the translation metadata can be downloaded.
 	DownloadURI string `json:"downloadUri,omitempty"`
 
@@ -1385,7 +1336,6 @@ type TranslationMetadata struct {
 
 // VersionControlDetails Specifies the information necessary to retrieve a desired revision from a version control system.
 type VersionControlDetails struct {
-
 	// A Coordinated Universal Time (UTC) date and time that can be used to synchronize an enlistment to the state of the repository at that time.
 	AsOfTimeUtc string `json:"asOfTimeUtc,omitempty"`
 
@@ -1410,7 +1360,6 @@ type VersionControlDetails struct {
 
 // WebRequest Describes an HTTP request.
 type WebRequest struct {
-
 	// The body of the request.
 	Body *ArtifactContent `json:"body,omitempty"`
 
@@ -1441,7 +1390,6 @@ type WebRequest struct {
 
 // WebResponse Describes the response to an HTTP request.
 type WebResponse struct {
-
 	// The body of the response.
 	Body *ArtifactContent `json:"body,omitempty"`
 
